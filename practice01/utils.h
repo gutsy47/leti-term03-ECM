@@ -5,6 +5,7 @@
 
 std::string getBitsOfSInt(short int);
 std::string getBitsOfLDouble(long double);
-void printSizeOfTypes();
+void swapBitsSInt(short int&, unsigned short, unsigned short);
+void swapBitsLDouble(long double&, unsigned short, unsigned short);
 
 #endif //ECM_UTILS_H

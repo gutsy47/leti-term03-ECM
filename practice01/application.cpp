@@ -66,9 +66,61 @@ int TApplication::execute() {
                 break;
             }
 
-            // Swap bits
-            case '3':
+            // Swap bits in short int
+            case '3': {
+                short int userInput;
+                std::cout << "<< Enter a short integer\n>> ";
+                if (!inputNumber(userInput)) continue;
+
+                unsigned int swapsAmount;
+                std::cout << "<< Enter amount of swaps\n>> ";
+                if (!inputNumber(swapsAmount, false, true)) break;
+
+                for (int i = 0; i < swapsAmount; ++i) {
+                    std::cout << "<< Iteration #" << i+1 << " of " << swapsAmount;
+                    std::cout << ": enter 1st & 2nd bits position (sep = space, start = 0)\n>> ";
+
+                    int x, y;
+                    if (!inputNumber(x, false, true)) break;
+                    if (!inputNumber(y, true, true)) break;
+
+                    swapBitsSInt(userInput, x, y);
+
+                    std::cout << "Result\n";
+                    std::cout << "Decimal: " << userInput << '\n';
+                    std::cout << " Binary: " << getBitsOfSInt(userInput) << '\n';
+                }
+
                 break;
+            }
+
+            // Swap bits in short int
+            case '4': {
+                long double userInput;
+                std::cout << "<< Enter a long double\n>> ";
+                if (!inputNumber(userInput)) continue;
+
+                unsigned int swapsAmount;
+                std::cout << "<< Enter amount of swaps\n>> ";
+                if (!inputNumber(swapsAmount, false, true)) break;
+
+                for (int i = 0; i < swapsAmount; ++i) {
+                    std::cout << "<< Iteration #" << i+1 << " of " << swapsAmount;
+                    std::cout << ": enter 1st & 2nd bits position (sep = space, start = 0)\n>> ";
+
+                    int x, y;
+                    if (!inputNumber(x, false, true)) break;
+                    if (!inputNumber(y, true, true)) break;
+
+                    swapBitsLDouble(userInput, x, y);
+
+                    std::cout << "Result\n";
+                    std::cout << "Decimal: " << userInput << '\n';
+                    std::cout << " Binary: " << getBitsOfLDouble(userInput) << '\n';
+                }
+
+                break;
+            }
 
             // Help menu
             case 'h':
