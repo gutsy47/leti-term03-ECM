@@ -1,8 +1,6 @@
 #include "utils.h"
 #include <limits>
 
-#include <cmath>
-
 /**
  * Returns binary representation of int
  * @param[in] value - decimal integer
