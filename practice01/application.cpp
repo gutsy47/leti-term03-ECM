@@ -130,7 +130,8 @@ int TApplication::execute() {
                 std::cout << std::setw(32) << std::setfill('-') << '\n';
                 std::cout << "1: Short integer binary representation\n";
                 std::cout << "2: Long double binary representation\n";
-                std::cout << "3: Task 19. Swap the values of bits in a given number of bit pairs\n";
+                std::cout << "3: Task 19. Swap the values of bits in a given short int of bit pairs\n";
+                std::cout << "3: Task 19. Swap the values of bits in a given long double of bit pairs\n";
                 std::cout << std::setw(32) << std::setfill('-') << '\n';
                 std::cout << "0: Exit\n";
                 std::cout << std::setw(32) << std::setfill('-') << '\n';
