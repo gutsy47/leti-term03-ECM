@@ -7,8 +7,8 @@
 #include "string.h"
 
 
-const int GrDriver = DETECT;
-const int GrMode;
+int GrDriver = DETECT;
+int GrMode;
 const int DotCount = 10000;
 const float RangeStart = 3.14;
 const float RangeEnd = 3.14 * 9;
@@ -16,12 +16,12 @@ const float RangeEnd = 3.14 * 9;
 
 /// Math for drawGraph function
 float f(float x) {
-    return (float) pow(cos(x), 3) - sqrt(x);
+    return (float) pow(cos(x/2), 3) - sqrt(x);
 }
 
 
 /// Draw the graph and return max point at the range
-float drawGraph(int x1, int x2, int y1, int y2) {
+float drawGraph(int x1, int y2) {
     float res = f(RangeStart);
     float fMax = res;
     float dx = (RangeEnd - RangeStart) / DotCount;
@@ -40,7 +40,7 @@ int main() {
     // Graph init
     initgraph(&GrDriver, &GrMode, "C:\\TurboC3\\BGI");
     auto *grRes = new int (graphresult());
-    if (*grRes != grOk){
+    if (*grRes != grOk) {
     	cputs(grapherrormsg(*grRes));
         cputs("\n\rPress anything to exit...");
         getch();
@@ -51,19 +51,18 @@ int main() {
 
     // Windows max cords
     int xMax = getmaxx(),
-	yMax = getmaxy();
+	    yMax = getmaxy();
 
     // Edges of a function graph
     int x1 = 30, x2 = xMax - 40,
-	y1 = 40, y2 = yMax - 200;
+        y1 = 40, y2 = yMax - 200;
 
-
-    setlinestyle(SOLID_LINE, 0, THICK_WIDTH); // Border linestyle
+    setlinestyle(SOLID_LINE, 0, THICK_WIDTH); // Border line style
     setcolor(BLUE);                           // Border color
     rectangle(5, 5, xMax - 5, yMax - 5);      // Border
 
     setcolor(WHITE);                          // Axes color
-    setlinestyle(SOLID_LINE, 0, NORM_WIDTH);  // Axes linestyle
+    setlinestyle(SOLID_LINE, 0, NORM_WIDTH);  // Axes line style
     line(x1, y1, x1, y2 + (y2 - y1) / 2);     // y-axis
     line(x2, y2, x1, y2);                     // x-axis
 
@@ -74,7 +73,7 @@ int main() {
 
     // Axes values and separators
     int i;
-    char iVal[12][2];
+    char iVal[15][2];
 
     // x-axis
     for (i = 1; i <= 56; ++i) {
@@ -91,13 +90,13 @@ int main() {
         int len = i % 4 == 0 ? 5 : 2;
         line(x1 - len, y2 - 10 * i, x1 + len, y2 - 10 * i);
         if (i % 4 == 0) {
-            sprintf(iVal[(i + 28) / 4 - 1], "%d" , i);
-            outtextxy(x1 - 20, y2 - 10 * i - 3, iVal[(i + 28) / 4 - 1]);
+            sprintf(iVal[(i + 11) / 4 - 1], "%d", i);
+            outtextxy(x1 - 20, y2 - 10 * i - 3, iVal[(i + 11) / 4 - 1]);
         }
     }
 
     // Function graph
-    float fMax = drawGraph(x1, x2, y1, y2);
+    float fMax = drawGraph(x1, y2);
 
     // Print function data
     char cFMax[15];
