@@ -94,9 +94,9 @@ int main() {
     clrscr();
 
     window(20, 15, 60, 20);
-    for (int i = 7; i <= 7; ++i) {
+    for (int i = 0; i <= 7; ++i) {
         textbackground(i);
-        for (int j = 10; j <= 15; ++j) {
+        for (int j = 0; j <= 15; ++j) {
             textcolor(j);
 
             //scrollUp(3, 20, 15, 59, 19);
